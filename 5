@@ -1,0 +1,27 @@
+import re
+
+pattern = r"[\w-]+@[\w-]+"
+string = "please send your feedback to sarathpalanisamy@gmail.com"
+match = re.search(pattern, string)
+
+if match:
+    print("Email to:", match.group())
+else:
+    print("No match")
+
+
+
+original_string = "Hello, World! Welcome to string manipulation."
+print(f"Length of the string: {len(original_string)}")
+print(f"Lowercase string: {original_string.lower()}")
+substring = "Welcome"
+print(f"Occurrences of '{substring}': {original_string.count(substring)}")
+new_string = original_string.replace("World", "Python")
+print(f"String after replacement: {new_string}")
+words = original_string.split()
+print(f"Split string into words: {words}")
+joined_string = "-".join(words)
+print(f"Joined string: {joined_string}")
+print(f"Ends with 'manipulation.': {original_string.endswith('manipulation.')}")
+messy_string = "   This is a messy string with extra spaces.    "
+print(f"Original string: '{messy_string.strip()}'")
