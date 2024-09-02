@@ -55,3 +55,27 @@ print(df.isnull().sum())
 print("\nAverage Age:", df['Age'].mean())
 
 print("Maximum Salary:", df['Salary'].max())
+
+
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva'],
+    'Age': [22, 27, 22, 32, 29],
+    'Salary': [50000, 50000, 55000, 62000, 60000]
+}
+
+df = pd.DataFrame(data)
+print("First 5 rows of the dataset:")
+print(df.head())
+
+plt.figure(figsize=(16, 6))
+df['Salary'].plot(kind='hist', bins=12, color='blue', edgecolor='black')
+plt.title('Histogram of Salary')
+plt.xlabel('Salary')
+plt.ylabel('Frequency')
+plt.show()
