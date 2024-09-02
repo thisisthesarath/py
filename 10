@@ -1,0 +1,30 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data = {
+    'Protein1': ['A', 'A', 'B', 'C', 'D'],
+    'Protein2': ['B', 'C', 'D', 'D', 'E']
+}
+
+df = pd.DataFrame(data)
+
+nodes = list(set(df['Protein1']) | set(df['Protein2']))
+edges = list(zip(df['Protein1'], df['Protein2']))
+
+node_positions = {node: (i, i % 2) for i, node in enumerate(nodes)}
+
+for edge in edges:
+    x_values = [node_positions[edge[0]][0], node_positions[edge[1]][0]]
+    y_values = [node_positions[edge[0]][1], node_positions[edge[1]][1]]
+    plt.plot(x_values, y_values, 'k-')
+
+for node, (x, y) in node_positions.items():
+    plt.plot(x, y, 'o', markersize=10, label=node)
+    plt.text(x, y, node, fontsize=12, ha='right')
+
+plt.title('Protein Interaction Network')
+plt.xlabel('Node Position')
+plt.ylabel('Node Position')
+plt.grid(True)
+plt.legend()
+plt.show()
