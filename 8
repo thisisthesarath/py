@@ -1,0 +1,25 @@
+import pandas as pd
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva'],
+    'Age': [24, 27, 22, 32, 29],
+    'Salary': [50000, 54000, 58000, 62000, 60000]
+}
+
+df = pd.DataFrame(data)
+
+print("First 5 rows of the dataset:")
+print(df.head())
+
+print("\nBasic Statistics:")
+print(df.describe())
+
+print("\nDataset Information:")
+print(df.info())
+
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+print("\nAverage Age:", df['Age'].mean())
+
+print("Maximum Salary:", df['Salary'].max())
