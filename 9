@@ -1,31 +1,19 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Creating a simple dataset
 data = {
     'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva'],
-    'Age': [24, 27, 22, 32, 29],
-    'Salary': [50000, 54000, 58000, 62000, 60000]
+    'Age': [22, 27, 22, 32, 29],
+    'Salary': [50000, 50000, 50000, 62000, 60000]
 }
 
-# Convert the dictionary to a DataFrame
 df = pd.DataFrame(data)
 
-# Display the first 5 rows of the dataset
 print("First 5 rows of the dataset:")
 print(df.head())
 
-# Plot histogram for the 'Age' column
-plt.figure(figsize=(8, 5))
-df['Age'].plot(kind='hist', bins=5, color='skyblue', edgecolor='black')
-plt.title('Histogram of Age')
-plt.xlabel('Age')
-plt.ylabel('Frequency')
-plt.show()
-
-# Plot histogram for the 'Salary' column
-plt.figure(figsize=(8, 5))
-df['Salary'].plot(kind='hist', bins=5, color='lightgreen', edgecolor='black')
+plt.figure(figsize=(8, 4))
+df['Salary'].plot(kind='hist', bins=6, color='blue', edgecolor='black')
 plt.title('Histogram of Salary')
 plt.xlabel('Salary')
 plt.ylabel('Frequency')
