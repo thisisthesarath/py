@@ -1,59 +1,68 @@
 import re
 
-pattern = r"[\w-]+@[\w-]+"
-string = "please send your feedback to sarathpalanisamy@gmail.com"
-match = re.search(pattern, string)
+text = "Hello Dharson, your email is dharson@gmail.com. Please confirm."
 
-if match:
-    print("Email to:", match.group())
+print("Original Text:", text)
+print("Uppercase:", text.upper())   
+print("Lowercase:", text.lower())   
+print("Replace 'Dharson' with 'Jane':", text.replace("Dharson", "Jane"))  
+print("Split by spaces:", text.split())  
+print("Does text contain 'email'? :", 'email' in text)  
+
+email_match = re.search(r"[\w\.-]+@[\w\.-]+", text)
+
+if email_match:
+    print("\nFound email:", email_match.group())  
 else:
-    print("No match")
+    print("\nNo email found.")
 
 
 
-original_string = "Hello, World! Welcome to string manipulation."
-print(f"Length of the string: {len(original_string)}")
-print(f"Lowercase string: {original_string.lower()}")
-substring = "Welcome"
-print(f"Occurrences of '{substring}': {original_string.count(substring)}")
-new_string = original_string.replace("World", "Python")
-print(f"String after replacement: {new_string}")
-words = original_string.split()
-print(f"Split string into words: {words}")
-joined_string = "-".join(words)
-print(f"Joined string: {joined_string}")
-print(f"Ends with 'manipulation.': {original_string.endswith('manipulation.')}")
-messy_string = "   This is a messy string with extra spaces.    "
-print(f"Original string: '{messy_string.strip()}'")
+with open('eg.text','w') as file:
+    file.write("Hello this is some random Text.\n")
+    file.write("This is Sarath.\n")
+with open('eg.text','r') as file:
+    contents=file.read()
+    print("Contents in the file:")
+    print(contents)
+
+
+
+
+my_list = [10, 20, 30, 40]
+my_list.append(50)
+my_list.remove(20)
+print("List:", my_list)
+
+my_tuple = (10, 20, 30, 40)
+print("Tuple Element [2]:", my_tuple[2])
+
+my_set = {10, 20, 30, 40}
+my_set.add(50)
+another_set = {30, 60, 70}
+print("Set Union:", my_set.union(another_set))
+
+my_dict = {'name': 'Alice', 'age': 25}
+my_dict['age'] = 26
+my_dict['job'] = 'Engineer'
+print("Dictionary:", my_dict)
 
 
 
 
 
 import pandas as pd
-
 data = {
     'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva'],
     'Age': [24, 27, 22, 32, 29],
     'Salary': [50000, 54000, 58000, 62000, 60000]
 }
-
 df = pd.DataFrame(data)
-
 print("First 5 rows of the dataset:")
 print(df.head())
-
 print("\nBasic Statistics:")
 print(df.describe())
-
-print("\nDataset Information:")
-print(df.info())
-
-print("\nMissing Values:")
-print(df.isnull().sum())
-
 print("\nAverage Age:", df['Age'].mean())
-
 print("Maximum Salary:", df['Salary'].max())
 
 
@@ -83,35 +92,30 @@ plt.show()
 
 
 
-
-
 import matplotlib.pyplot as plt
-import pandas as pd
+data = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]
+plt.hist(data, bins=5, edgecolor='black')
+plt.title('Histogram Example')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.show()
 
-data = {
-    'Protein1': ['A', 'A', 'B', 'C', 'D'],
-    'Protein2': ['B', 'C', 'D', 'D', 'E']
-}
 
-df = pd.DataFrame(data)
 
-nodes = list(set(df['Protein1']) | set(df['Protein2']))
-edges = list(zip(df['Protein1'], df['Protein2']))
 
-node_positions = {node: (i, i % 2) for i, node in enumerate(nodes)}
 
-for edge in edges:
-    x_values = [node_positions[edge[0]][0], node_positions[edge[1]][0]]
-    y_values = [node_positions[edge[0]][1], node_positions[edge[1]][1]]
-    plt.plot(x_values, y_values, 'k-')
-
-for node, (x, y) in node_positions.items():
-    plt.plot(x, y, 'o', markersize=10, label=node)
-    plt.text(x, y, node, fontsize=12, ha='right')
-
-plt.title('Protein Interaction Network')
-plt.xlabel('Node Position')
-plt.ylabel('Node Position')
-plt.grid(True)
-plt.legend()
+import networkx as nx
+import matplotlib.pyplot as plt
+G = nx.Graph()
+proteins = ["Protein1", "Protein2", "Protein3", "Protein4"]
+G.add_nodes_from(proteins)
+interactions = [
+    ("Protein1", "Protein2"),
+    ("Protein1", "Protein3"),
+    ("Protein2", "Protein4"),
+    ("Protein3", "Protein4")
+]
+G.add_edges_from(interactions)
+nx.draw(G, with_labels=True, node_size=500, node_color="skyblue", font_size=10, font_weight="bold", edge_color="gray")
+plt.title("Protein-Protein Interaction Graph")
 plt.show()
